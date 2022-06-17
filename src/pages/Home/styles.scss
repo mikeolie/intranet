@@ -60,3 +60,17 @@
   font-family: Montserrat;
   font-size: xx-large;
 }
+
+.department-section__header {
+  display: flex;
+  flex-direction: row;
+  div {
+    width: 9px;
+    background-color: #F5DCA6;
+  }
+  h4 {
+    margin: 9px;
+    font-weight: 700;
+    margin-left: 24px;
+  }
+}
