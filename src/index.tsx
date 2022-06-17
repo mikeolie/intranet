@@ -1,8 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./index.scss";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
 import App from "./App";
+
+import store, { persistor } from "./store";
 import reportWebVitals from "./reportWebVitals";
+
+import "./index.scss";
 
 globalThis.React = React;
 
@@ -11,7 +17,11 @@ const root = createRoot(container);
 
 const AppWrapper = () => (
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 
