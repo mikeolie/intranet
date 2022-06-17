@@ -1,0 +1,62 @@
+.App {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  main {
+    display: flex;
+    flex: 1 1 95%;
+    flex-direction: column;
+    padding-left: 5%;
+  }
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.menu__container {
+  background-color: #1f292a;
+  color: white;
+  margin-top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 35px;
+  flex: 0 0 5%;
+  align-items: center;
+}
+
+.intro__wrapper {
+  position: absolute;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.animated__text--active {
+  font-family: Montserrat;
+  font-size: xx-large;
+}
