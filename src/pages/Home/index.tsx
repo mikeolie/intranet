@@ -54,7 +54,12 @@ function Home() {
       >
         <h4 className="animated-text__wrapper">{animatedWords}</h4>
       </motion.div>
-      <motion.section variants={contentVariants} className="menu__container">
+      <motion.section
+        initial="initial"
+        animate="animate"
+        variants={contentVariants}
+        className="menu__container"
+      >
         <header>Hello!</header>
       </motion.section>
       <motion.main

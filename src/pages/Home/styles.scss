@@ -1,4 +1,13 @@
 $post-height: 150px;
+$main-font: "Montserrat";
+
+@mixin font__styles {
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.015em;
+}
 
 .App {
   display: flex;
@@ -80,13 +89,14 @@ $post-height: 150px;
 
 .post__container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
 }
 
-.post_-image {
+.post__image {
   height: $post-height;
-  width: 13%;
+  width: auto;
+  max-width: 20%;
 }
 
 .post__content {
@@ -95,4 +105,19 @@ $post-height: 150px;
   height: $post-height;
   justify-content: space-around;
   padding-left: 40px;
+  sup {
+    font-weight: 700;
+    @include font__styles;
+  }
+
+  sub {
+    @include font__styles;
+    color: #f5dca6;
+  }
+
+  span {
+    @include font__styles;
+    font-weight: 400;
+    color: #1f292a;
+  }
 }
