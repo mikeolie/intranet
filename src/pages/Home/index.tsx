@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import logo from "../../assets/images/rctv-logo.png";
 import {
@@ -10,11 +10,18 @@ import {
 } from "./animations";
 import "./styles.scss";
 import { DEPARTMENTS } from "../../common/constants";
+import { useAppDispatch } from "../../config/hooks";
+import { clearPosts } from "../../actions/posts";
+import Posts from "../../components/Posts";
 
 function Home() {
+  const dispatch = useAppDispatch();
   const [selectedDepartment, selectDepartment] = useState<string>(
     DEPARTMENTS[0]
   );
+  useEffect(() => {
+    dispatch(clearPosts());
+  });
   const departments = DEPARTMENTS.map((department: string) => (
     <li key={department} onClick={() => selectDepartment(department)}>
       {department}
@@ -67,6 +74,7 @@ function Home() {
           <article className="department-section__header">
             <div />
             <h4>{selectedDepartment} Announcements</h4>
+            <Posts />
           </article>
         </motion.section>
       </motion.main>
