@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+
+import Posts from "../../components/Posts";
+
 import logo from "../../assets/images/rctv-logo.png";
 import {
   containerVariants,
@@ -12,7 +15,6 @@ import "./styles.scss";
 import { DEPARTMENTS } from "../../common/constants";
 import { useAppDispatch } from "../../config/hooks";
 import { clearPosts } from "../../actions/posts";
-import Posts from "../../components/Posts";
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -74,8 +76,8 @@ function Home() {
           <article className="department-section__header">
             <div />
             <h4>{selectedDepartment} Announcements</h4>
-            <Posts />
           </article>
+          <Posts />
         </motion.section>
       </motion.main>
     </div>

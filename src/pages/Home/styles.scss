@@ -1,3 +1,5 @@
+$post-height: 150px;
+
 .App {
   display: flex;
   flex-direction: row;
@@ -64,13 +66,33 @@
 .department-section__header {
   display: flex;
   flex-direction: row;
+  margin-bottom: 50px;
   div {
     width: 9px;
-    background-color: #F5DCA6;
+    background-color: #f5dca6;
   }
   h4 {
     margin: 9px;
     font-weight: 700;
     margin-left: 24px;
   }
+}
+
+.post__container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.post_-image {
+  height: $post-height;
+  width: 13%;
+}
+
+.post__content {
+  display: flex;
+  flex-direction: column;
+  height: $post-height;
+  justify-content: space-around;
+  padding-left: 40px;
 }
