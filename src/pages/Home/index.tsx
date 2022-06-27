@@ -57,10 +57,16 @@ function Home() {
       <motion.section
         initial="initial"
         animate="animate"
-        variants={contentVariants}
+        variants={pageContent}
         className="menu__container"
       >
         <header>Hello!</header>
+        <article>
+          <ul>
+            <li>Home</li>
+            <li>Forms</li>
+          </ul>
+        </article>
       </motion.section>
       <motion.main
         variants={contentVariants}
