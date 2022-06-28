@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import Posts from "../../components/Posts";
+import Weather from "../../components/Weather";
 
 import logo from "../../assets/images/rctv-logo.png";
 import {
@@ -13,7 +14,7 @@ import {
 } from "./animations";
 import "./styles.scss";
 import { DEPARTMENTS } from "../../common/constants";
-import { useAppDispatch } from "../../config/hooks";
+import { useAppDispatch, useAppSelector } from "../../config/hooks";
 
 import { clearPosts } from "../../actions/posts";
 import { getWeather } from "../../actions/weather";
@@ -27,6 +28,7 @@ function Home() {
     dispatch(getWeather());
     dispatch(clearPosts());
   });
+  const weatherData = useAppSelector((state) => state.weather);
   const departments = DEPARTMENTS.map((department: string) => (
     <li key={department} onClick={() => selectDepartment(department)}>
       {department}
@@ -98,10 +100,7 @@ function Home() {
           </header>
         </motion.section>
         <motion.section variants={pageContent}>
-          <article>
-            <header>Weather</header>
-            <body>Weather and icon goes here</body>
-          </article>
+          <Weather data={weatherData} />
         </motion.section>
       </motion.article>
     </div>

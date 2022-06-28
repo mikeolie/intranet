@@ -2,7 +2,7 @@ import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
 import { getWeather } from "../actions/weather";
 import { WEATHER_RES } from "../common/types";
 
-interface WEATHER_INITIAL_STATE {
+export interface WEATHER_INITIAL_STATE {
   description: string;
   icon: string;
   temp: number;
