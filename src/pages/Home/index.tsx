@@ -14,7 +14,9 @@ import {
 import "./styles.scss";
 import { DEPARTMENTS } from "../../common/constants";
 import { useAppDispatch } from "../../config/hooks";
+
 import { clearPosts } from "../../actions/posts";
+import { getWeather } from "../../actions/weather";
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -22,6 +24,7 @@ function Home() {
     DEPARTMENTS[0]
   );
   useEffect(() => {
+    dispatch(getWeather());
     dispatch(clearPosts());
   });
   const departments = DEPARTMENTS.map((department: string) => (
@@ -54,12 +57,7 @@ function Home() {
       >
         <h4 className="animated-text__wrapper">{animatedWords}</h4>
       </motion.div>
-      <motion.section
-        initial="initial"
-        animate="animate"
-        variants={pageContent}
-        className="menu__container"
-      >
+      <motion.section variants={pageContent} className="menu__container">
         <header>Hello!</header>
         <article>
           <ul>
@@ -79,10 +77,7 @@ function Home() {
             <motion.h4 variants={title}>Announcements</motion.h4>
           </header>
         </motion.section>
-        <motion.section
-          variants={pageContent}
-          className="announcements__container"
-        >
+        <motion.section variants={pageContent}>
           <ul className="department-list__container">{departments}</ul>
           <article className="department-section__header">
             <div />
@@ -91,6 +86,24 @@ function Home() {
           <Posts />
         </motion.section>
       </motion.main>
+      <motion.article
+        variants={contentVariants}
+        initial="initial"
+        animate="animate"
+        className="weather__container"
+      >
+        <motion.section variants={pageContent}>
+          <header>
+            <motion.h4 variants={title}>Weather</motion.h4>
+          </header>
+        </motion.section>
+        <motion.section variants={pageContent}>
+          <article>
+            <header>Weather</header>
+            <body>Weather and icon goes here</body>
+          </article>
+        </motion.section>
+      </motion.article>
     </div>
   );
 }

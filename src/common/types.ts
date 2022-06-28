@@ -10,3 +10,9 @@ export interface POST {
   date_created: string | Date;
   publish_date: string | Date;
 }
+
+export interface WEATHER_RES {
+  current_temp: number;
+  icon_url: string;
+  weather_description: string;
+}

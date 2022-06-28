@@ -15,7 +15,7 @@ $main-font: "Montserrat";
   height: 100vh;
   main {
     display: flex;
-    flex: 1 1 95%;
+    flex: 1 1 75%;
     flex-direction: column;
     padding-left: 5%;
   }
@@ -120,4 +120,10 @@ $main-font: "Montserrat";
     font-weight: 400;
     color: #1f292a;
   }
+}
+
+.weather__container {
+  display: flex;
+  flex: 1 1 20%;
+  flex-direction: column;
 }
