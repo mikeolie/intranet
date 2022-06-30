@@ -37,7 +37,6 @@ function Home() {
     dispatch(getWeather());
     dispatch(clearPosts());
   });
-  const weatherData = useAppSelector((state) => state.weather);
   const departments = DEPARTMENTS.map((department: string) => (
     <li key={department} onClick={() => selectDepartment(department)}>
       {department}
@@ -122,7 +121,7 @@ function Home() {
           </header>
         </motion.section>
         <motion.section variants={pageContent}>
-          <Weather data={weatherData} />
+          <Weather />
           <ArchivedPosts />
         </motion.section>
       </motion.article>

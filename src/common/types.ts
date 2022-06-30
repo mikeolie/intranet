@@ -16,3 +16,7 @@ export interface WEATHER_RES {
   icon_url: string;
   weather_description: string;
 }
+
+export interface REACT_POST {
+  data: POST;
+}

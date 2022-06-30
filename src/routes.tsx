@@ -5,6 +5,7 @@ import Error404 from "./components/404";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Admin from "./pages/Admin";
 
 const IntranetRoutes: FunctionComponent = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const IntranetRoutes: FunctionComponent = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/admin" element={<Admin />} />
         <Route element={<Error404 />} />
       </Routes>
     </Layout>

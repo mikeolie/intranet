@@ -1,11 +1,9 @@
-import { WEATHER_INITIAL_STATE } from "../../reducers/weather";
+import { useAppSelector } from "../../config/hooks";
 
 import "./styles.scss";
 
-interface WeatherProps {
-  data: WEATHER_INITIAL_STATE;
-}
-function Weather({ data }: WeatherProps) {
+function Weather() {
+  const data = useAppSelector((state) => state.weather);
   const { temp, description, icon } = data;
   const formattedTemp = +temp.toFixed(0);
   return (
