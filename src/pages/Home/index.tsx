@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+import Article from "@mui/icons-material/Article";
+import Avatar from "@mui/material/Avatar";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import HomeIcon from "@mui/icons-material/Home";
+
 import Posts from "../../components/Posts";
 import Weather from "../../components/Weather";
+import ArchivedPosts from "../../components/ArchivedPosts";
 
 import logo from "../../assets/images/rctv-logo.png";
 import {
@@ -60,13 +69,25 @@ function Home() {
         <h4 className="animated-text__wrapper">{animatedWords}</h4>
       </motion.div>
       <motion.section variants={pageContent} className="menu__container">
-        <header>Hello!</header>
-        <article>
-          <ul>
-            <li>Home</li>
-            <li>Forms</li>
-          </ul>
-        </article>
+        <header style={{ marginTop: 100 }}>Hello!</header>
+        <List className="menu__list">
+          <ListItem className="menu__item">
+            <ListItemAvatar>
+              <Avatar>
+                <HomeIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem className="menu__item">
+            <ListItemAvatar>
+              <Avatar>
+                <Article />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Forms" />
+          </ListItem>
+        </List>
       </motion.section>
       <motion.main
         variants={contentVariants}
@@ -81,7 +102,7 @@ function Home() {
         </motion.section>
         <motion.section variants={pageContent}>
           <ul className="department-list__container">{departments}</ul>
-          <article className="department-section__header">
+          <article className="home-section__header">
             <div />
             <h4>{selectedDepartment} Announcements</h4>
           </article>
@@ -95,12 +116,14 @@ function Home() {
         className="weather__container"
       >
         <motion.section variants={pageContent}>
-          <header>
+          <header className="home-section__header" style={{ marginBottom: 0 }}>
+            <div />
             <motion.h4 variants={title}>Weather</motion.h4>
           </header>
         </motion.section>
         <motion.section variants={pageContent}>
           <Weather data={weatherData} />
+          <ArchivedPosts />
         </motion.section>
       </motion.article>
     </div>

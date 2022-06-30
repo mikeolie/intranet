@@ -15,7 +15,7 @@ $main-font: "Montserrat";
   height: 100vh;
   main {
     display: flex;
-    flex: 1 1 75%;
+    flex: 1 1 70%;
     flex-direction: column;
     padding-left: 5%;
   }
@@ -50,12 +50,16 @@ $main-font: "Montserrat";
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 35px;
-  flex: 0 0 5%;
+  padding: 0;
+  flex: 0 0 13%;
   align-items: center;
+  header {
+    margin-top: 150px;
+  }
 }
 
 .intro__wrapper {
+  z-index: 10000;
   position: absolute;
   background-color: white;
   height: 100vh;
@@ -72,7 +76,7 @@ $main-font: "Montserrat";
   font-size: xx-large;
 }
 
-.department-section__header {
+.home-section__header {
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;
@@ -126,4 +130,23 @@ $main-font: "Montserrat";
   display: flex;
   flex: 1 1 20%;
   flex-direction: column;
+  margin-top: 4%;
+}
+
+.menu__list {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  .MuiAvatar-root {
+    border-radius: 30%;
+    background-color: #c1a15c;
+  }
+  .MuiTypography-root {
+    font-family: $main-font;
+  }
+}
+
+.menu__item {
+  margin-bottom: 30px;
+  cursor: pointer;
 }
