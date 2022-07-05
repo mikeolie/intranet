@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import AdminPosts from "../../components/AdminPosts";
+
 import "./styles.scss";
 
 function Admin() {
@@ -12,7 +15,7 @@ function Admin() {
           <span>Go Back</span>
         </article>
         <article>
-          <button className="">Create Posts</button>
+          <Link to="/create">Create Post</Link>
         </article>
         <article>
           <button className="" onClick={handleEditModeClick}>

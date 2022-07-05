@@ -20,3 +20,9 @@ export interface WEATHER_RES {
 export interface REACT_POST {
   data: POST;
 }
+
+export interface ImageState {
+  file: File
+  id: number
+  src: unknown
+}

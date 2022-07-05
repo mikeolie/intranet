@@ -23,7 +23,7 @@ import {
 } from "./animations";
 import "./styles.scss";
 import { DEPARTMENTS } from "../../common/constants";
-import { useAppDispatch, useAppSelector } from "../../config/hooks";
+import { useAppDispatch } from "../../config/hooks";
 
 import { clearPosts } from "../../actions/posts";
 import { getWeather } from "../../actions/weather";
