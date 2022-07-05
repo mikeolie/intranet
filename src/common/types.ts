@@ -22,7 +22,7 @@ export interface REACT_POST {
 }
 
 export interface ImageState {
-  file: File
-  id: number
-  src: unknown
+  file: File;
+  id: number;
+  src: string;
 }
