@@ -1,3 +1,5 @@
+import { DEPARTMENTS } from "./constants";
+
 export interface POST {
   id: number;
   title: string;
@@ -25,4 +27,21 @@ export interface ImageState {
   file: File;
   id: number;
   src: string;
+}
+
+export type Departments =
+  | "All"
+  | "Call Center"
+  | "PACT"
+  | "Marketing"
+  | "Production"
+  | "Warehouse & Shipping";
+
+export interface IPostForm {
+  title: string;
+  subTitle: string;
+  department: Departments;
+  body: string;
+  publishedDate: string | Date;
+  headerImg: ImageState | null;
 }

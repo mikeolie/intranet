@@ -13,7 +13,7 @@ export default function TextEditor({ body, setBody }: TextEditorProps) {
     if (editorRef.current) {
       // set content here
       const content = editorRef.current.getContent();
-      setBody(content);
+      setBody(content, 'body');
     }
   };
   return (
