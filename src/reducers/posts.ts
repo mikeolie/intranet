@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
-import { clearPosts, getPosts } from "../actions/posts";
+import { clearPosts, createPosts, getPosts } from "../actions/posts";
 import { POST } from "../common/types";
 
 interface POSTS_INITIAL_STATE {
@@ -30,6 +30,12 @@ const postsSlice = createSlice({
       error: null,
       status: "succeeded",
     }));
+    builder.addCase(createPosts.fulfilled, (state, action) => {
+      const { post } = action.payload;
+      const newArr = JSON.parse(JSON.stringify(state.posts));
+      newArr.push(post);
+      state.posts = newArr;
+    });
     builder.addCase(clearPosts.fulfilled, (state) => ({ ...initialState }));
   },
 });

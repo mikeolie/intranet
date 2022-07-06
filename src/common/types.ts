@@ -1,16 +1,34 @@
-import { DEPARTMENTS } from "./constants";
+export type Departments =
+  | "All"
+  | "Call Center"
+  | "PACT"
+  | "Marketing"
+  | "Production"
+  | "Warehouse & Shipping";
 
 export interface POST {
   id: number;
   title: string;
   subtitle: string;
-  department: string;
+  department: Departments;
   header_img: string;
   body: string;
   is_archived: boolean;
   date_modified: string | Date;
   date_created: string | Date;
   publish_date: string | Date;
+}
+
+export interface POST_REQUEST {
+  title: string;
+  subtitle: string;
+  department: Departments;
+  header_img: string;
+  body: string;
+  is_archived: boolean;
+  date_modified: string | Date;
+  publish_date: string | Date;
+  date_created: string | Date;
 }
 
 export interface WEATHER_RES {
@@ -28,14 +46,6 @@ export interface ImageState {
   id: number;
   src: string;
 }
-
-export type Departments =
-  | "All"
-  | "Call Center"
-  | "PACT"
-  | "Marketing"
-  | "Production"
-  | "Warehouse & Shipping";
 
 export interface IPostForm {
   title: string;

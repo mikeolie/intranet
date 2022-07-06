@@ -1,5 +1,8 @@
 import { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+
+import Button from "@mui/material/Button";
+
 import { TINY_API_KEY } from "../../common/constants";
 
 interface TextEditorProps {
@@ -9,28 +12,22 @@ interface TextEditorProps {
 
 export default function TextEditor({ body, setBody }: TextEditorProps) {
   const editorRef: any = useRef();
-  const log = () => {
+  const saveContent = () => {
     if (editorRef.current) {
-      // set content here
       const content = editorRef.current.getContent();
-      setBody(content, 'body');
+      setBody(content, "body");
     }
   };
   return (
     <>
       <Editor
-        onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue="<p>This is the initial content of the editor.</p>"
+        onInit={(_evt, editor) => (editorRef.current = editor)}
         value={body}
         apiKey={TINY_API_KEY}
         init={{
           height: 500,
           menubar: false,
-          plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table paste code help wordcount",
-          ],
+          plugins: ["", "", "insertdatetime"],
           toolbar:
             "undo redo | formatselect | " +
             "bold italic backcolor | alignleft aligncenter " +
@@ -40,7 +37,13 @@ export default function TextEditor({ body, setBody }: TextEditorProps) {
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
         }}
       />
-      <button onClick={log}>Log editor content</button>
+      <Button
+        variant="contained"
+        sx={{ marginTop: 2, marginBottom: 2, width: "30%" }}
+        onClick={saveContent}
+      >
+        Save Content
+      </Button>
     </>
   );
 }
