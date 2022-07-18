@@ -9,6 +9,10 @@ interface PreviewPostProps {
 
 export default function PreviewPost({ post }: PreviewPostProps) {
   const { headerImg, title, subTitle, department, body, publishedDate } = post;
+  let imgSrc = ''
+  if (headerImg) {
+    imgSrc = headerImg.src
+  }
   const formattedDate = new Date(publishedDate).toDateString();
   return (
     <div className="story__container">
@@ -16,7 +20,7 @@ export default function PreviewPost({ post }: PreviewPostProps) {
         <header>{title}</header>
         <h6>{subTitle}</h6>
         <figure className="story__image">
-          <img src={headerImg!.src} alt={headerImg!.src} />
+          <img src={imgSrc} alt={imgSrc} />
         </figure>
       </section>
       <article className="story-misc__container">

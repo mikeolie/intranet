@@ -31,19 +31,27 @@ function PostForm({ formData, updateState }: PostFormProps) {
   const handleDateChange = (newValue: Date | null) =>
     updateState(newValue, "publishedDate");
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files: FileList = e.target.files as FileList;
-    const imgFile = files[0];
-    const reader = new FileReader();
-    reader.onload = (e: ProgressEvent<FileReader>) =>
-      updateState(
-        {
-          file: imgFile,
-          id: 0,
-          src: e.target!.result as string,
-        },
-        "headerImg"
-      );
-    reader.readAsDataURL(imgFile);
+    if (!e.target.files) {
+      return;
+    } else {
+      const files: FileList = e.target.files as FileList;
+      const imgFile = files[0];
+      const reader = new FileReader();
+      reader.onload = (evt: ProgressEvent<FileReader>) => {
+        if (!e.target.files) {
+          return null;
+        }
+        updateState(
+          {
+            file: e.target.files[0],
+            id: 0,
+            src: evt.target!.result as string,
+          },
+          "headerImg"
+        );
+      };
+      reader.readAsDataURL(imgFile);
+    }
   };
   const imgInput = headerImg ? (
     <article className="image-upload__container">
