@@ -7,13 +7,17 @@ import PreviewPost from "../../components/Posts/PreviewPost";
 
 import { createPosts } from "../../actions/posts";
 
+import RCTVSnackbar from "../../components/Snackbar";
+
 import {
   Departments,
   ImageState,
   IPostForm,
   POST_REQUEST,
+  SNACKBAR_STATUSES,
 } from "../../common/types";
 import uploadFilesToAws from "../../modules/uploadFilesToAws";
+import formatDate from "../../modules/formatDate";
 import { useAppDispatch } from "../../config/hooks";
 
 function CreatePost() {
@@ -24,6 +28,20 @@ function CreatePost() {
   const [publishedDate, setPublishedDate] = useState<any>(new Date());
   const [headerImg, setHeaderImg] = useState<ImageState | null>(null);
   const [previewMode, togglePreviewMode] = useState<boolean>(false);
+  const [snackbarOpen, setSnackbar] = useState<boolean>(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<string>("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState<SNACKBAR_STATUSES>(
+    SNACKBAR_STATUSES.SUCCESS
+  );
+  const resetState = () => {
+    setTitle("");
+    setSubtitle("");
+    setDepartment("All");
+    setBody("");
+    setPublishedDate(new Date());
+    setHeaderImg(null);
+    togglePreviewMode(false);
+  };
   const dispatch = useAppDispatch();
   const toggleText = previewMode ? "Edit Post" : "Preview Post";
   const updateState = (value: string | Date | ImageState, key: string) => {
@@ -64,18 +82,27 @@ function CreatePost() {
       header_img: headerImgLink,
       body,
       is_archived: false,
-      date_modified: new Date().toDateString(),
-      date_created: new Date().toDateString(),
-      publish_date: new Date(publishedDate).toDateString(),
+      date_modified: formatDate(new Date()),
+      date_created: formatDate(new Date()),
+      publish_date: formatDate(new Date(publishedDate)),
     };
     // submit to axios
     const res = await dispatch(createPosts(dataToSend));
     // get response
+    let msg: string = "";
     if (res.meta.requestStatus === "rejected") {
       // set error
+      msg += "Unable to create new post! Please contact Mike for assistance";
+      setSnackbarMessage(msg);
+      setSnackbarSeverity(SNACKBAR_STATUSES.ERROR);
+      return setSnackbar(true);
     }
     // show success
-    // redirect to home page
+    msg += "Created new Post!";
+    setSnackbarMessage(msg);
+    setSnackbarSeverity(SNACKBAR_STATUSES.SUCCESS);
+    setSnackbar(true);
+    resetState();
   };
   const showPreviewButton = body.length > 20;
   const formData: IPostForm = {
@@ -106,6 +133,12 @@ function CreatePost() {
       )}
       {content}
       {previewMode && <Button onClick={handleConfirm}>Save Post</Button>}
+      <RCTVSnackbar
+        isOpen={snackbarOpen}
+        severity={snackbarSeverity}
+        setSnackbar={setSnackbar}
+        snackbarMessage={snackbarMessage}
+      />
     </div>
   );
 }

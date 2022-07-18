@@ -55,3 +55,8 @@ export interface IPostForm {
   publishedDate: string | Date;
   headerImg: ImageState | null;
 }
+
+export enum SNACKBAR_STATUSES {
+  "SUCCESS" = "success",
+  "ERROR" = "error",
+}
