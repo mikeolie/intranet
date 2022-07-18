@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
+import HomeIcon from "@mui/icons-material/Home";
 
 import PostForm from "../../components/PostForm";
 import PreviewPost from "../../components/Posts/PreviewPost";
@@ -19,6 +21,8 @@ import {
 import uploadFilesToAws from "../../modules/uploadFilesToAws";
 import formatDate from "../../modules/formatDate";
 import { useAppDispatch } from "../../config/hooks";
+
+import "./styles.scss";
 
 function CreatePost() {
   const [title, setTitle] = useState<string>("");
@@ -121,24 +125,31 @@ function CreatePost() {
   return (
     <div id="post-page__container">
       <nav>
-        <article>Go back to admin</article>
+        <Link to="/admin">
+          <article className="go-back">
+            <HomeIcon />
+            <h6>Go to home screen</h6>
+          </article>
+        </Link>
       </nav>
-      <header>
-        <h4>Create Post</h4>
-      </header>
-      {showPreviewButton && (
-        <Button onClick={() => togglePreviewMode(!previewMode)}>
-          {toggleText}
-        </Button>
-      )}
-      {content}
-      {previewMode && <Button onClick={handleConfirm}>Save Post</Button>}
-      <RCTVSnackbar
-        isOpen={snackbarOpen}
-        severity={snackbarSeverity}
-        setSnackbar={setSnackbar}
-        snackbarMessage={snackbarMessage}
-      />
+      <main>
+        <header>
+          <h4>Create Post</h4>
+        </header>
+        {showPreviewButton && (
+          <Button onClick={() => togglePreviewMode(!previewMode)}>
+            {toggleText}
+          </Button>
+        )}
+        {content}
+        {previewMode && <Button onClick={handleConfirm}>Save Post</Button>}
+        <RCTVSnackbar
+          isOpen={snackbarOpen}
+          severity={snackbarSeverity}
+          setSnackbar={setSnackbar}
+          snackbarMessage={snackbarMessage}
+        />
+      </main>
     </div>
   );
 }

@@ -14,6 +14,7 @@ $main-font: "Montserrat";
   flex-direction: row;
   height: 100vh;
   main {
+    overflow: scroll;
     display: flex;
     flex: 1 1 70%;
     flex-direction: column;
@@ -92,6 +93,7 @@ $main-font: "Montserrat";
 }
 
 .post__container {
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
