@@ -152,3 +152,11 @@ $main-font: "Montserrat";
   margin-bottom: 30px;
   cursor: pointer;
 }
+
+.dept-text {
+  cursor: pointer;
+  &:hover {
+    color: darken(#c1a15c, 10%);
+    font-style: bold;
+  }
+}

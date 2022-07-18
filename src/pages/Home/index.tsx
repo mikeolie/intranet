@@ -38,9 +38,14 @@ function Home() {
     dispatch(clearPosts());
   });
   const departments = DEPARTMENTS.map((department: string) => (
-    <li key={department} onClick={() => selectDepartment(department)}>
+    <motion.li
+      className="dept-text"
+      whileHover={{ scale: 1.1, transition: { duration: .6 } }}
+      key={department}
+      onClick={() => selectDepartment(department)}
+    >
       {department}
-    </li>
+    </motion.li>
   ));
   const INTRO_TEXT = "Rare Collectibles Intranet Site";
   const animatedWords = INTRO_TEXT.split(" \u00A0").map((word) => {
